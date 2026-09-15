@@ -35,6 +35,10 @@ yarn-error.log
 .env
 .env.local
 
+# Carpeta backend PR/ DATA
+# backend_pr/
+data/
+
 # Gradle (si lo usas en algún momento)
 .gradle/
 gradle/
