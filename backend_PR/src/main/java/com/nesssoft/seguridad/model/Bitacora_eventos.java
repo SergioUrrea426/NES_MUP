@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 /**
  * Entidad JPA para la tabla de Bitácora de Eventos
@@ -20,7 +21,7 @@ public class Bitacora_eventos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_evento")
-    private int id_evento;
+    private Long id_evento;
     
     @Column(name = "tipo_evento")
     private String tipo_evento;
@@ -62,10 +63,10 @@ public class Bitacora_eventos {
     private String dispositivo;
     
     @Column(name = "sesion")
-    private String sesion;
+    private UUID sesion;
     
     @Column(name = "token_sesion")
-    private String token_sesion;
+    private UUID token_sesion;
     
     @Column(name = "severidad")
     private String severidad;

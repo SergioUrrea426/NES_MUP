@@ -26,7 +26,7 @@ public class RolesRepository {
         statement.setString(1, role.getCodigo());
         statement.setString(2, role.getNombre());
         statement.setString(3, role.getDescripcion());
-        statement.setString(4, role.getNivelJerarquia());
+        statement.setInt(4, role.getNivelJerarquia());
         statement.setBoolean(5, role.isEstado());
 
         statement.executeUpdate();
@@ -55,7 +55,7 @@ public class RolesRepository {
                 String codigo = resultSet.getString("codigo");
                 String nombre = resultSet.getString("nombre");
             String descripcion = resultSet.getString("descripcion");
-            String nivelJerarquia = resultSet.getString("nivel_jerarquia");
+            Integer nivelJerarquia = resultSet.getInt("nivel_jerarquia");
             boolean estado = resultSet.getBoolean("estado");
             java.sql.Timestamp fechaCreacionTimestamp = resultSet.getTimestamp("fecha_creacion");
             java.time.LocalDateTime fechaCreacion = fechaCreacionTimestamp != null
