@@ -30,7 +30,7 @@ public class Roles {
     private String descripcion;
 
     @Column(name = "nivel_jerarquia")
-    private String nivelJerarquia;
+    private Integer nivelJerarquia;
 
     @Column(name = "estado")
     private boolean estado;
@@ -47,7 +47,7 @@ public class Roles {
             String codigo,
             String nombre,
             String descripcion,
-            String nivelJerarquia,
+            Integer nivelJerarquia,
             boolean estado,
             LocalDateTime fechaCreacion) {
 
@@ -96,11 +96,11 @@ public class Roles {
         this.descripcion = descripcion;
     }
 
-    public String getNivelJerarquia() {
+    public Integer getNivelJerarquia() {
         return nivelJerarquia;
     }
 
-    public void setNivelJerarquia(String nivelJerarquia) {
+    public void setNivelJerarquia(Integer nivelJerarquia) {
         this.nivelJerarquia = nivelJerarquia;
     }
 

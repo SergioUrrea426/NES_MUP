@@ -19,6 +19,9 @@
 -- cualquier otro schema sin calificación adicional.
 -- ============================================================================
 
+
+
+
 CREATE TYPE tipo_catalogo_enum AS ENUM (
   'PAIS','DEPARTAMENTO','CIUDAD','MONEDA','UNIDAD_MEDIDA',
   'METODO_PAGO','TIPO_DOCUMENTO','CATEGORIA_PRODUCTO','MARCA'
