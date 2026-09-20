@@ -1,13 +1,85 @@
-document.getElementById("loginForm").addEventListener("submit", function(e){
+document.addEventListener('DOMContentLoaded', () => {
+    // Referencias a los elementos del DOM
+    const loginForm = document.getElementById('loginForm');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const togglePasswordBtn = document.getElementById('togglePassword');
+    const eyeIcon = document.getElementById('eyeIcon');
+    const emailError = document.getElementById('emailError');
+    const passwordError = document.getElementById('passwordError');
+    const submitBtn = document.getElementById('submitBtn');
 
-    e.preventDefault();
+    // 1. Mostrar / Ocultar Contraseña
+    if (togglePasswordBtn && passwordInput && eyeIcon) {
+        togglePasswordBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Alternar el tipo de input entre 'password' y 'text'
+            const isPassword = passwordInput.getAttribute('type') === 'password';
+            passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+            
+            // Alternar los iconos de FontAwesome
+            if (isPassword) {
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        });
+    }
 
-    const email = document.getElementById("email").value;
+    // 2. Control del envío del Formulario y Validaciones
+    if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
 
-    const password = document.getElementById("password").value;
+            let isValid = true;
+            const emailValue = emailInput.value.trim();
+            const passwordValue = passwordInput.value.trim();
 
-    console.log(email);
+            // Validar Correo Electrónico
+            if (!validateEmail(emailValue)) {
+                emailInput.classList.add('input-error');
+                emailError.classList.remove('hidden');
+                isValid = false;
+            } else {
+                emailInput.classList.remove('input-error');
+                emailError.classList.add('hidden');
+            }
 
-    console.log(password);
+            // Validar Contraseña
+            if (passwordValue === '') {
+                passwordInput.classList.add('input-error');
+                passwordError.classList.remove('hidden');
+                isValid = false;
+            } else {
+                passwordInput.classList.remove('input-error');
+                passwordError.classList.add('hidden');
+            }
 
+            // Si las validaciones son correctas, se procesa la solicitud
+            if (isValid) {
+                submitForm(emailValue);
+            }
+        });
+    }
+
+    // Función auxiliar para validar formato de correo electrónico
+    function validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    // Simulación de envío a Backend / Autenticación
+    function submitForm(email) {
+        submitBtn.classList.add('btn-loading');
+        submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin text-sm"></i> Conectando...';
+
+        setTimeout(() => {
+            alert(`Acceso concedido a NESS SOFT para: ${email}`);
+            submitBtn.classList.remove('btn-loading');
+            submitBtn.innerHTML = '<span id="btnText">Ingresar al Sistema</span><i class="fa-solid fa-arrow-right text-xs" id="btnIcon"></i>';
+        }, 1500);
+    }
 });

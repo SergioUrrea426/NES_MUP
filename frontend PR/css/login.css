@@ -1,72 +1,23 @@
-body{
-    margin: 0;
-    height: 100vh;
+/* Estilos personalizados para la vista de Login */
 
-    display:flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    background:#ffffff;
-
-    font-family:Arial;
-
+/* Resaltado de campos con error de validación */
+.input-error {
+    border-color: #ef4444 !important;
+    background-color: #fef2f2 !important;
 }
 
-.login-box{
-    width: 350px;
-    height: 400px;
-
-    padding: 40px;
-
-    background: #fff;
-
-    border-radius: 12px;
-
-    box-shadow: 0px 0px 25px rgba(0,0,0,.15);
-
+.input-error:focus {
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.25) !important;
 }
 
-.logo{
-
-    width: 500px;
-    height: auto;
-
-    display:block;
-
-    margin:auto;
-
+/* Transición suave para los campos del formulario */
+.input-field {
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-input{
-
-    width:100%;
-
-    padding:12px;
-
-    margin-top:15px;
-
-    border-radius:6px;
-
-}
-
-button{
-
-    width:105%;
-
-    padding:12px;
-
-    margin-top:20px;
-
-    background:#1E3A8A;
-
-    color:white;
-
-    border:none;
-
-    border-radius:6px;
-
-    cursor:pointer;
-
+/* Estado de carga durante el envío del formulario */
+.btn-loading {
+    opacity: 0.8;
+    cursor: wait;
+    pointer-events: none;
 }
