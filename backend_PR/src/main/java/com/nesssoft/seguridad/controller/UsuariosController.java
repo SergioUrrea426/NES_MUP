@@ -61,9 +61,10 @@ public class UsuariosController {
      */
     @PostMapping("/login")
     public ResponseEntity<Map<String, Object>> login(
-            @RequestParam String email,
-            @RequestParam String password) {
-        
+            @RequestBody Map<String, String> credentials) {
+        String email = credentials.get("email");
+        String password = credentials.get("password");
+
         try {
             boolean loginExitoso = loginService.login(email, password);
             

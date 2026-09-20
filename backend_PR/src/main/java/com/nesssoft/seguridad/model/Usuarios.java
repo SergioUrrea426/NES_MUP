@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "usuarios", schema = "seguridad")
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 public class Usuarios {
 
@@ -101,8 +100,16 @@ public class Usuarios {
     private Integer actualizadoPor;
 
     // ======================
-    // Constructor
+    // Constructor vacio para validación de login
     // ======================
+
+    protected Usuarios(){}
+    
+
+    // ======================
+    // Constructor comnpleto para la creación de usuarios y consultas
+    // ======================
+
     public Usuarios(
             int idRol,
             String nombres,
@@ -321,5 +328,5 @@ public class Usuarios {
 
         this.passwordHash = nuevaPassword;
     }
-
+    
 }
