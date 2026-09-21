@@ -71,63 +71,21 @@ document.addEventListener("DOMContentLoaded", () => {
     return emailRegex.test(email);
   }
 
-  // Envío real a Backend / Autenticación (Spring Boot)
-  const API_LOGIN_URL = "http://localhost:8080/api/usuarios/login";
-
-  async function submitForm(email, password) {
+  // Flujo local de demostración: no realiza llamadas al backend.
+  function submitForm(email) {
     submitBtn.classList.add("btn-loading");
     submitBtn.innerHTML =
       '<i class="fa-solid fa-circle-notch fa-spin text-sm"></i> Conectando...';
 
-    try {
-      // --- Opción recomendada: POST con body en JSON ---
-      const response = await fetch(API_LOGIN_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      // --- Alternativa: GET con query params (si tu API lo exige así) ---
-      // const params = new URLSearchParams({ email, password });
-      // const response = await fetch(`${API_LOGIN_URL}?${params.toString()}`, {
-      //     method: 'GET'
-      // });
-
-      if (!response.ok) {
-        // El backend respondió, pero con error (401, 400, 500, etc.)
-        let mensaje = "Credenciales inválidas. Intenta nuevamente.";
-        try {
-          const errorData = await response.json();
-          if (errorData && errorData.message) {
-            mensaje = errorData.message;
-          }
-        } catch (_) {
-          // El backend no devolvió JSON, se usa el mensaje por defecto
-        }
-        throw new Error(mensaje);
-      }
-
-      const data = await response.json();
-
-      // Ajusta esto según lo que realmente devuelva tu API
-      // (por ejemplo: un token JWT, datos del usuario, etc.)
-      if (data.token) {
-        localStorage.setItem("authToken", data.token);
-      }
-
-      alert(`Acceso concedido a NESS SOFT para: ${email}`);
+    setTimeout(() => {
+      sessionStorage.setItem("nesssoft.frontendSession", JSON.stringify({ email }));
       window.location.href = "dashboard.html"; // redirige donde corresponda
-    } catch (error) {
-      console.error("Error en el login:", error);
-      passwordInput.classList.add("input-error");
-      passwordError.textContent = error.message || "No se pudo iniciar sesión.";
-      passwordError.classList.remove("hidden");
-    } finally {
+    }, 500);
+
+    setTimeout(() => {
       submitBtn.classList.remove("btn-loading");
       submitBtn.innerHTML =
         '<span id="btnText">Ingresar al Sistema</span><i class="fa-solid fa-arrow-right text-xs" id="btnIcon"></i>';
-    }
+    }, 500);
   }
 });

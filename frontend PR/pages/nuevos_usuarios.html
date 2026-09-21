@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NESS SOFT - Nuevos usuarios</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/nuevos_usuarios.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <div>
+      <div class="brand-container">
+        <img src="../img/NESSlogoopti.png" alt="NESS SOFT" class="brand-logo-img">
+      </div>
+
+      <div class="user-card">
+        <div class="user-avatar"><i data-lucide="user"></i></div>
+        <div class="user-info">
+          <div class="name">Administrador <span class="role-badge">CEO</span></div>
+          <div class="user-status"><span class="status-dot"></span> En línea</div>
+        </div>
+      </div>
+
+      <div class="nav-section-title">Navegación</div>
+      <ul class="nav-menu">
+        <li><a href="dashboard.html" class="nav-link"><i data-lucide="layout-dashboard"></i><span>Dashboard</span></a></li>
+        <li><a href="clientes.html" class="nav-link"><i data-lucide="users"></i><span>Clientes</span></a></li>
+        <li><a href="cotizaciones.html" class="nav-link"><i data-lucide="file-text"></i><span>Cotizaciones</span></a></li>
+        <li><a href="oportunidades.html" class="nav-link"><i data-lucide="target"></i><span>Oportunidades</span></a></li>
+      </ul>
+
+      <div class="nav-section-title">Configuración</div>
+      <ul class="nav-menu">
+        <li><a href="Usuarios.html" class="nav-link"><i data-lucide="user-cog"></i><span>Usuarios y roles</span></a></li>
+        <li><a href="nuevos_usuarios.html" class="nav-link active"><i data-lucide="user-plus"></i><span>Nuevo usuario</span></a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <i data-lucide="shield" style="color:#60a5fa;"></i>
+      <div><h4>NESS SOFT</h4><p>v1.0 Producción</p></div>
+    </div>
+  </aside>
+
+  <main class="main-wrapper users-workspace">
+      <header class="top-header">
+        <div class="header-title">
+          <span class="eyebrow"><i data-lucide="user-plus"></i> Administración de usuarios</span>
+          <h1>Crear nuevo usuario</h1>
+          <p>Registra un perfil de acceso para el equipo comercial de NESS SOFT.</p>
+        </div>
+        <a href="dashboard.html" class="btn-secondary user-back-link"><i data-lucide="arrow-left"></i> Volver al dashboard</a>
+      </header>
+
+      <div id="alert-box" class="alert-message" role="status" aria-live="polite"></div>
+
+      <section class="user-form-layout">
+        <div class="form-card">
+          <div class="form-card-header">
+            <div class="form-card-icon"><i data-lucide="contact"></i></div>
+            <div><h2>Datos del usuario</h2><p>Completa la información básica y las credenciales.</p></div>
+          </div>
+
+          <form id="form-nuevos-usuarios">
+            <div class="form-section">
+              <div class="section-heading"><span>01</span><div><h3>Información personal</h3><p>Cómo identificaremos a esta persona en el CRM.</p></div></div>
+              <div class="form-grid-2">
+            <div class="form-group">
+              <label for="usr-nombres">Nombres *</label>
+              <input type="text" id="usr-nombres" class="form-control" required placeholder="Ej. Carlos Alberto">
+            </div>
+            <div class="form-group">
+              <label for="usr-username">Nombre de usuario *</label>
+              <input type="text" id="usr-username" class="form-control" required maxlength="50" pattern="[a-zA-Z0-9._-]+" placeholder="Ej. cmendoza">
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="usr-email">Correo Electrónico *</label>
+              <input type="email" id="usr-email" class="form-control" required placeholder="carlos.mendoza@ness.com">
+            </div>
+            <div class="form-group">
+              <label for="usr-telefono">Teléfono fijo</label>
+              <input type="tel" id="usr-telefono" class="form-control" maxlength="20" placeholder="+57 601 555 0101">
+            </div>
+            <div class="form-group">
+              <label for="usr-celular">Celular</label>
+              <input type="tel" id="usr-celular" class="form-control" maxlength="20" placeholder="+57 310 000 0000">
+            </div>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <div class="section-heading"><span>02</span><div><h3>Perfil y permisos</h3><p>Define el alcance operativo de la cuenta.</p></div></div>
+              <div class="form-grid-2">
+            <div class="form-group">
+              <label for="usr-rol">Rol de Sistema *</label>
+              <select id="usr-rol" class="form-control" required>
+                <option value="">Seleccione un rol...</option>
+                <option value="1">ADSIS - Administrador del sistema</option>
+                <option value="2">CEO - Gerente</option>
+                <option value="3">AC - Administrador Comercial</option>
+                <option value="4">ASC - Asesor Comercial</option>
+                <option value="5">CE - Cliente Ecommerce</option>
+                <option value="6">SIS - Sistemas</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="usr-zona-horaria">Zona horaria *</label>
+              <select id="usr-zona-horaria" class="form-control" required>
+                <option value="America/Bogota" selected>Colombia - Bogotá (UTC-5)</option>
+                <option value="America/New_York">Estados Unidos - Nueva York</option>
+                <option value="Europe/Madrid">España - Madrid</option>
+              </select>
+            </div>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <div class="section-heading"><span>03</span><div><h3>Seguridad de acceso</h3><p>Usa una contraseña de al menos seis caracteres.</p></div></div>
+              <div class="form-grid-2">
+            <div class="form-group">
+              <label for="usr-pass">Contraseña *</label>
+              <input type="password" id="usr-pass" class="form-control" required placeholder="••••••••" minlength="6">
+            </div>
+            <div class="form-group">
+              <label for="usr-pass-confirm">Confirmar Contraseña *</label>
+              <input type="password" id="usr-pass-confirm" class="form-control" required placeholder="••••••••">
+            </div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <a href="dashboard.html" class="btn-secondary">Cancelar</a>
+              <button type="submit" class="btn-primary"><i data-lucide="save"></i> Guardar usuario</button>
+            </div>
+          </form>
+        </div>
+
+        <aside class="form-aside">
+          <div class="aside-icon"><i data-lucide="info"></i></div>
+          <h2>Antes de guardar</h2>
+          <p>El usuario podrá ingresar con el correo registrado y la contraseña definida en este formulario.</p>
+          <ul>
+            <li><i data-lucide="check-circle-2"></i><span>Verifica que el correo sea corporativo.</span></li>
+            <li><i data-lucide="check-circle-2"></i><span>Asigna el rol según sus responsabilidades.</span></li>
+            <li><i data-lucide="check-circle-2"></i><span>Activa la cuenta solo cuando esté lista.</span></li>
+          </ul>
+        </aside>
+      </section>
+  </main>
+
+  <script src="../js/nuevos_usuarios.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

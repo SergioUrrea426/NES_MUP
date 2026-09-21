@@ -1,0 +1,27 @@
+// Cotizaciones demo: permiten probar filtros y totales sin backend.
+const cotizacionesBD = [
+  { id_cotizacion: 1, consecutivo: 'COT-2026-001', cliente: 'Industrias NESS S.A.S.', vendedor: 'Carlos Mendoza', fecha_emision: '2026-09-01', fecha_vencimiento: '2026-09-15', total: 12500000, id_estado_cotizacion: 3 },
+  { id_cotizacion: 2, consecutivo: 'COT-2026-002', cliente: 'Eric Santiago Rios', vendedor: 'Laura Gomez', fecha_emision: '2026-09-05', fecha_vencimiento: '2026-09-20', total: 3400000, id_estado_cotizacion: 2 },
+  { id_cotizacion: 3, consecutivo: 'COT-2026-003', cliente: 'Logistica del Caribe Lda.', vendedor: 'Carlos Mendoza', fecha_emision: '2026-09-10', fecha_vencimiento: '2026-09-25', total: 28000000, id_estado_cotizacion: 2 },
+  { id_cotizacion: 4, consecutivo: 'COT-2026-004', cliente: 'Comercializadora Alfa', vendedor: 'Laura Gomez', fecha_emision: '2026-09-12', fecha_vencimiento: '2026-09-27', total: 5100000, id_estado_cotizacion: 4 },
+  { id_cotizacion: 5, consecutivo: 'COT-2026-005', cliente: 'Servicios Integrales M&R', vendedor: 'Eric Santiago', fecha_emision: '2026-09-18', fecha_vencimiento: '2026-10-02', total: 8900000, id_estado_cotizacion: 1 }
+];
+// Relaciona cada estado de negocio con su texto y clase visual.
+const estadosCotizacion = { 1: ['Borrador', 'quote-draft'], 2: ['Enviada', 'quote-sent'], 3: ['Aprobada', 'quote-approved'], 4: ['Rechazada', 'quote-rejected'] };
+let cotizaciones = [...cotizacionesBD, ...obtenerCotizacionesLocales()];
+// Arranca filtros, tabla e iconos después de crear el DOM.
+document.addEventListener('DOMContentLoaded', () => { conectarFiltros(); renderizarCotizaciones(); lucide.createIcons(); });
+// Recupera cotizaciones creadas desde el formulario frontend.
+function obtenerCotizacionesLocales() { try { return JSON.parse(localStorage.getItem('nesssoft.cotizaciones') || '[]'); } catch (error) { return []; } }
+// Vincula búsqueda y filtro de estado con la misma renderización.
+function conectarFiltros() { document.getElementById('search-cotizacion').addEventListener('input', renderizarCotizaciones); document.getElementById('filter-estado-cot').addEventListener('change', renderizarCotizaciones); }
+// Filtra el listado, actualiza el contador y vuelve a dibujar filas.
+function renderizarCotizaciones() { const query = document.getElementById('search-cotizacion').value.trim().toLowerCase(); const estado = document.getElementById('filter-estado-cot').value; const filtradas = cotizaciones.filter(cot => `${cot.consecutivo} ${cot.cliente} ${cot.vendedor}`.toLowerCase().includes(query) && (!estado || String(cot.id_estado_cotizacion) === estado)); actualizarKpis(); document.getElementById('quotes-results').textContent = `${filtradas.length} resultado${filtradas.length === 1 ? '' : 's'} encontrado${filtradas.length === 1 ? '' : 's'}`; document.getElementById('tabla-cotizaciones-body').innerHTML = filtradas.length ? filtradas.map(crearFilaCotizacion).join('') : '<tr><td colspan="8" class="empty-state">No hay cotizaciones que coincidan con los filtros.</td></tr>'; lucide.createIcons(); }
+// Genera una fila y conserva los datos externos como texto seguro.
+function crearFilaCotizacion(cot) { const estado = estadosCotizacion[cot.id_estado_cotizacion] || estadosCotizacion[1]; return `<tr><td><strong>${escapeHtml(cot.consecutivo)}</strong></td><td>${escapeHtml(cot.cliente)}</td><td>${escapeHtml(cot.vendedor)}</td><td>${cot.fecha_emision}</td><td>${cot.fecha_vencimiento}</td><td><strong>${formatearMoneda(cot.total)}</strong></td><td><span class="quote-status ${estado[1]}">${estado[0]}</span></td><td><div class="quote-actions"><button class="icon-action" type="button" title="Ver cotización" data-quote-action="view" data-quote-id="${cot.id_cotizacion}"><i data-lucide="eye"></i></button><button class="icon-action" type="button" title="Editar cotización" data-quote-action="edit" data-quote-id="${cot.id_cotizacion}"><i data-lucide="pencil"></i></button></div></td></tr>`; }
+// Calcula indicadores de negocio a partir del listado actualmente disponible.
+function actualizarKpis() { const total = cotizaciones.reduce((sum, cot) => sum + Number(cot.total || 0), 0); const aprobadas = cotizaciones.filter(cot => Number(cot.id_estado_cotizacion) === 3).length; const enviadas = cotizaciones.filter(cot => Number(cot.id_estado_cotizacion) === 2).length; document.getElementById('kpi-total-monto').textContent = formatearMoneda(total); document.getElementById('kpi-aprobadas').textContent = aprobadas; document.getElementById('kpi-enviadas').textContent = enviadas; document.getElementById('kpi-conversion').textContent = cotizaciones.length ? `${((aprobadas / cotizaciones.length) * 100).toFixed(1)}%` : '0%'; }
+document.addEventListener('click', event => { const button = event.target.closest('[data-quote-action]'); if (!button) return; const quote = cotizaciones.find(item => String(item.id_cotizacion) === button.dataset.quoteId); if (quote) mostrarAlerta(`${button.dataset.quoteAction === 'view' ? 'Detalle' : 'Edición'} de ${quote.consecutivo} disponible en frontend.`, 'success'); });
+function mostrarAlerta(mensaje, tipo) { const alertBox = document.getElementById('quotes-alert'); alertBox.textContent = mensaje; alertBox.className = `quotes-alert ${tipo}`; }
+function formatearMoneda(valor) { return `$ ${Number(valor).toLocaleString('es-CO')}`; }
+function escapeHtml(value) { return String(value).replace(/[&<>'"]/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#039;', '"': '&quot;' }[character])); }

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NESS SOFT - Oportunidades</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/oportunidades.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div>
+            <div class="brand-container">
+                <img src="../img/NESSlogoopti.png" alt="NESS SOFT" class="brand-logo-img">
+            </div>
+
+            <div class="user-card">
+                <div class="user-avatar"><i data-lucide="user"></i></div>
+                <div class="user-info">
+                    <div class="name">Administrador <span class="role-badge">CEO</span></div>
+                    <div class="user-status"><span class="status-dot"></span> En línea</div>
+                </div>
+            </div>
+
+            <div class="nav-section-title">Navegación</div>
+            <ul class="nav-menu">
+                <li><a href="dashboard.html" class="nav-link"><i data-lucide="layout-dashboard"></i> <span>Dashboard</span></a></li>
+                <li><a href="clientes.html" class="nav-link"><i data-lucide="users"></i> <span>Clientes</span></a></li>
+                <li><a href="cotizaciones.html" class="nav-link"><i data-lucide="file-text"></i> <span>Cotizaciones</span></a></li>
+                <li><a href="oportunidades.html" class="nav-link active"><i data-lucide="target"></i> <span>Oportunidades</span></a></li>
+            </ul>
+
+            <div class="nav-section-title">Configuración</div>
+            <ul class="nav-menu">
+                <li><a href="Usuarios.html" class="nav-link"><i data-lucide="user-cog"></i> <span>Usuarios y roles</span></a></li>
+                <li><a href="Usuarios.html" class="nav-link"><i data-lucide="shield-check"></i> <span>Seguridad y Permisos</span></a></li>
+            </ul>
+        </div>
+
+        <div class="sidebar-footer">
+            <i data-lucide="shield" style="color:#60a5fa;"></i>
+            <div>
+                <h4 style="font-size:0.8rem; color:white;">NESS SOFT</h4>
+                <p style="font-size:0.7rem; color:var(--text-sidebar-muted);">v1.0 Producción</p>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-wrapper">
+        <header class="top-header">
+            <div class="header-title">
+                <h1>Pipeline de Oportunidades</h1>
+                <p>Seguimiento de negocios en negociación</p>
+            </div>
+            <div class="header-controls">
+                <button class="btn-primary" type="button" id="btn-nueva-oportunidad"><i data-lucide="plus"></i> Nueva oportunidad</button>
+            </div>
+        </header>
+
+        <section class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-icon"><i data-lucide="target"></i></div>
+                <div>
+                    <span class="kpi-label">Prospección</span>
+                    <h2 id="kpi-prospeccion">0</h2>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon"><i data-lucide="trending-up"></i></div>
+                <div>
+                    <span class="kpi-label">Negociación</span>
+                    <h2 id="kpi-negociacion">0</h2>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon"><i data-lucide="badge-check"></i></div>
+                <div><span class="kpi-label">Ganadas</span><h2 id="kpi-ganadas">0</h2></div>
+            </div>
+        </section>
+
+        <div id="opportunities-alert" class="opportunities-alert" role="status" aria-live="polite"></div>
+    </main>
+
+    <script src="../js/oportunidades.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

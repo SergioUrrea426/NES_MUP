@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NESS SOFT - Nuevo cliente</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/nuevo_cliente.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <div>
+      <div class="brand-container">
+        <img src="../img/NESSlogoopti.png" alt="NESS SOFT" class="brand-logo-img">
+      </div>
+
+      <div class="user-card">
+        <div class="user-avatar"><i data-lucide="user"></i></div>
+        <div class="user-info">
+          <div class="name">Administrador <span class="role-badge">CEO</span></div>
+          <div class="user-status"><span class="status-dot"></span> En línea</div>
+        </div>
+      </div>
+
+      <div class="nav-section-title">Navegación</div>
+      <ul class="nav-menu">
+        <li><a href="dashboard.html" class="nav-link"><i data-lucide="layout-dashboard"></i><span>Dashboard</span></a></li>
+        <li><a href="clientes.html" class="nav-link active"><i data-lucide="users"></i><span>Clientes</span></a></li>
+        <li><a href="cotizaciones.html" class="nav-link"><i data-lucide="file-text"></i><span>Cotizaciones</span></a></li>
+        <li><a href="oportunidades.html" class="nav-link"><i data-lucide="target"></i><span>Oportunidades</span></a></li>
+      </ul>
+
+      <div class="nav-section-title">Configuración</div>
+      <ul class="nav-menu">
+        <li><a href="Usuarios.html" class="nav-link"><i data-lucide="user-cog"></i><span>Usuarios y roles</span></a></li>
+        <li><a href="Usuarios.html" class="nav-link"><i data-lucide="shield-check"></i><span>Seguridad y Permisos</span></a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <i data-lucide="shield" style="color:#60a5fa;"></i>
+      <div><h4>NESS SOFT</h4><p>v1.0 Producción</p></div>
+    </div>
+  </aside>
+
+  <main class="main-wrapper client-workspace">
+      <header class="top-header">
+        <div class="header-title">
+          <span class="eyebrow"><i data-lucide="user-plus"></i> Directorio de clientes</span>
+          <h1>Registrar nuevo cliente</h1>
+          <p>Ingresa los datos comerciales y de contacto para crear una cuenta.</p>
+        </div>
+        <a href="clientes.html" class="btn-secondary client-back-link"><i data-lucide="arrow-left"></i> Volver a clientes</a>
+      </header>
+
+      <div id="alert-box" class="alert-message" role="status" aria-live="polite"></div>
+
+      <section class="client-form-layout">
+        <div class="form-card">
+          <div class="form-card-header">
+            <div class="form-card-icon"><i data-lucide="building-2"></i></div>
+            <div><h2>Información del cliente</h2><p>Los campos marcados con * son obligatorios.</p></div>
+          </div>
+
+          <form id="form-crear-cliente">
+            <div class="form-section">
+              <div class="section-heading"><span>01</span><div><h3>Identificación</h3><p>Datos tributarios y nombre comercial.</p></div></div>
+              <div class="form-grid-3">
+            <div class="form-group">
+              <label for="cli-tipo-persona">Tipo Personería *</label>
+              <select id="cli-tipo-persona" class="form-control" required>
+                <option value="JURIDICA">Persona Jurídica (Empresa)</option>
+                <option value="NATURAL">Persona Natural</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="cli-num-doc" id="lbl-num-doc">NIT / Documento (Único) *</label>
+              <input type="text" id="cli-num-doc" class="form-control" required placeholder="Ej. 901234567-1">
+            </div>
+            <div class="form-group">
+              <label for="cli-razon-social" id="lbl-razon-social">Razón Social / Nombre *</label>
+              <input type="text" id="cli-razon-social" class="form-control" required placeholder="Ej. Industrias NESS S.A.S.">
+            </div>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <div class="section-heading"><span>02</span><div><h3>Contacto y estado</h3><p>Canales para mantener la relación comercial.</p></div></div>
+              <div class="form-grid-3">
+            <div class="form-group">
+              <label for="cli-email">Correo Electrónico *</label>
+              <input type="email" id="cli-email" class="form-control" required placeholder="contacto@cliente.com">
+            </div>
+            <div class="form-group">
+              <label for="cli-telefono">Teléfono / Celular *</label>
+              <input type="tel" id="cli-telefono" class="form-control" required placeholder="+57 310 000 0000">
+            </div>
+            <div class="form-group">
+              <label for="cli-estado">Estado del Cliente *</label>
+              <select id="cli-estado" class="form-control" required>
+                <option value="1">Prospecto / Lead</option>
+                <option value="2" selected>Cliente Activo</option>
+                <option value="3">Inactivo</option>
+              </select>
+            </div>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <div class="section-heading"><span>03</span><div><h3>Ubicación</h3><p>Información útil para la gestión de la cuenta.</p></div></div>
+              <div class="form-grid-3">
+            <div class="form-group">
+              <label for="cli-ciudad">Ciudad *</label>
+              <input type="text" id="cli-ciudad" class="form-control" required placeholder="Ej. Bogotá D.C.">
+            </div>
+            <div class="form-group">
+              <label for="cli-direccion">Dirección Física</label>
+              <input type="text" id="cli-direccion" class="form-control" placeholder="Ej. Calle 100 # 15-20">
+            </div>
+            <div class="form-group">
+              <label for="cli-fecha">Fecha Registro</label>
+              <input type="text" id="cli-fecha" class="form-control" readonly disabled>
+            </div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <a href="clientes.html" class="btn-secondary">Cancelar</a>
+              <button type="submit" class="btn-primary"><i data-lucide="save"></i> Registrar cliente</button>
+            </div>
+          </form>
+        </div>
+
+        <aside class="form-aside">
+          <div class="aside-icon"><i data-lucide="clipboard-check"></i></div>
+          <h2>Checklist comercial</h2>
+          <p>Una ficha completa facilita el seguimiento de oportunidades y cotizaciones.</p>
+          <ul>
+            <li><i data-lucide="check-circle-2"></i><span>Confirma el documento único antes de guardar.</span></li>
+            <li><i data-lucide="check-circle-2"></i><span>Registra un correo y teléfono de contacto.</span></li>
+            <li><i data-lucide="check-circle-2"></i><span>Usa el estado correcto para el pipeline.</span></li>
+          </ul>
+        </aside>
+      </section>
+
+  <script src="../js/nuevo_cliente.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
