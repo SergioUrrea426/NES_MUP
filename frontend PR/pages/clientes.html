@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NESS SOFT - Directorio de clientes</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/clientes.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <div>
+      <div class="brand-container"><img src="../img/NESSlogoopti.png" alt="NESS SOFT" class="brand-logo-img"></div>
+      <div class="user-card"><div class="user-avatar"><i data-lucide="user"></i></div><div class="user-info"><div class="name">Administrador <span class="role-badge">CEO</span></div><div class="user-status"><span class="status-dot"></span> En línea</div></div></div>
+      <div class="nav-section-title">Navegación</div>
+      <ul class="nav-menu">
+        <li><a href="dashboard.html" class="nav-link"><i data-lucide="layout-dashboard"></i><span>Dashboard</span></a></li>
+        <li><a href="clientes.html" class="nav-link active"><i data-lucide="users"></i><span>Clientes</span></a></li>
+        <li><a href="cotizaciones.html" class="nav-link"><i data-lucide="file-text"></i><span>Cotizaciones</span></a></li>
+        <li><a href="oportunidades.html" class="nav-link"><i data-lucide="target"></i><span>Oportunidades</span></a></li>
+      </ul>
+      <div class="nav-section-title">Configuración</div>
+      <ul class="nav-menu">
+        <li><a href="Usuarios.html" class="nav-link"><i data-lucide="user-cog"></i><span>Usuarios y roles</span></a></li>
+        <li><a href="Usuarios.html" class="nav-link"><i data-lucide="shield-check"></i><span>Seguridad y Permisos</span></a></li>
+      </ul>
+    </div>
+    <div class="sidebar-footer"><i data-lucide="shield" style="color:#60a5fa;"></i><div><h4>NESS SOFT</h4><p>v1.0 Producción</p></div></div>
+  </aside>
+
+  <main class="main-wrapper clients-management">
+    <header class="top-header">
+      <div class="header-title"><span class="eyebrow"><i data-lucide="contact-round"></i> Gestión comercial</span><h1>Directorio de clientes</h1><p>Consulta, segmenta y acompaña las cuentas registradas en NESS SOFT.</p></div>
+      <a href="nuevo_cliente.html" class="btn-primary"><i data-lucide="user-plus"></i> Nuevo cliente</a>
+    </header>
+
+    <section class="client-summary-grid" aria-label="Resumen de clientes">
+      <div class="client-summary-card"><span>Clientes registrados</span><strong id="metric-clientes-total">0</strong><i data-lucide="contact"></i></div>
+      <div class="client-summary-card"><span>Clientes activos</span><strong id="metric-clientes-activos">0</strong><i data-lucide="badge-check"></i></div>
+      <div class="client-summary-card"><span>Prospectos</span><strong id="metric-clientes-prospectos">0</strong><i data-lucide="trending-up"></i></div>
+    </section>
+
+    <section class="clients-controls" aria-label="Filtros de clientes">
+      <div class="search-box"><i data-lucide="search"></i><input type="search" id="search-cliente" placeholder="Buscar por NIT, nombre o correo..."></div>
+      <select id="filter-personeria" class="form-control" aria-label="Filtrar por personería"><option value="">Todas las personerías</option><option value="JURIDICA">Persona Jurídica</option><option value="NATURAL">Persona Natural</option></select>
+      <select id="filter-estado" class="form-control" aria-label="Filtrar por estado"><option value="">Todos los estados</option><option value="1">Prospectos / Leads</option><option value="2">Clientes activos</option><option value="3">Inactivos</option></select>
+    </section>
+
+    <div id="clientes-alert" class="clientes-alert" role="status" aria-live="polite"></div>
+
+    <section class="table-card client-table-card">
+      <div class="table-heading"><div><h2>Cuentas comerciales</h2><p id="clientes-results">Clientes registrados en la vista frontend</p></div><span class="data-source">Gestión local</span></div>
+      <div class="table-scroll"><table class="ness-table"><thead><tr><th>Cliente</th><th>Documento</th><th>Contacto</th><th>Personería</th><th>Ciudad</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="tabla-clientes-body"></tbody></table></div>
+    </section>
+  </main>
+
+  <script src="../js/clientes.js"></script><script>lucide.createIcons();</script>
+</body>
+</html>

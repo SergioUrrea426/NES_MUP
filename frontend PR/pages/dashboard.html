@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NESS SOFT - Dashboard</title>
+    <!-- Enlace al archivo CSS unificado -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <!-- Iconos Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- BARRA LATERAL ESTILO NESS -->
+    <aside class="sidebar">
+        <div>
+            <!-- Logo real optimizado desde carpeta /img/ -->
+            <div class="brand-container">
+                <img src="../img/NESSlogoopti.png" alt="NESS SOFT" class="brand-logo-img">
+            </div>
+
+            <!-- Usuario Perfil -->
+            <div class="user-card">
+                <div class="user-avatar">
+                    <i data-lucide="user"></i>
+                </div>
+                <div class="user-info">
+                    <div class="name">
+                        Administrador <span class="role-badge">CEO</span>
+                    </div>
+                    <div class="user-status">
+                        <span class="status-dot"></span> En línea
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navegación Vinculada a tus Páginas -->
+            <div class="nav-section-title">Navegación</div>
+            <ul class="nav-menu">
+                <li>
+                    <a href="dashboard.html" class="nav-link active">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="clientes.html" class="nav-link">
+                        <i data-lucide="users"></i>
+                        <span>Clientes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="cotizaciones.html" class="nav-link">
+                        <i data-lucide="file-text"></i>
+                        <span>Cotizaciones</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="oportunidades.html" class="nav-link">
+                        <i data-lucide="target"></i>
+                        <span>Oportunidades</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="nav-section-title">Configuración</div>
+            <ul class="nav-menu">
+                <li>
+                    <a href="Usuarios.html" class="nav-link">
+                        <i data-lucide="user-cog"></i>
+                        <span>Usuarios</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="Usuarios.html" class="nav-link">
+                        <i data-lucide="shield-check"></i>
+                        <span>Seguridad y Permisos</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Footer Sidebar -->
+        <div class="sidebar-footer">
+            <i data-lucide="shield" style="color:#60a5fa;"></i>
+            <div>
+                <h4 style="font-size:0.8rem; color:white;">NESS SOFT</h4>
+                <p style="font-size:0.7rem; color:var(--text-sidebar-muted);">v1.0 Producción</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ÁREA PRINCIPAL -->
+    <main class="main-wrapper dashboard-main">
+        
+        <!-- Header Superior -->
+        <header class="top-header">
+            <div class="header-title">
+                <h1>Dashboard</h1>
+                <p>Resumen general del estado del sistema NESS SOFT</p>
+            </div>
+            <div class="header-controls">
+                <div class="search-box">
+                    <i data-lucide="search" aria-hidden="true"></i>
+                    <input type="search" id="dashboard-search" placeholder="Buscar clientes, cotizaciones, oportunidades..." aria-label="Buscar en el dashboard">
+                    </div>
+                <a class="btn-primary" href="clientes.html">
+                    <i data-lucide="plus"></i> Nuevo Registro
+                </a>
+            </div>
+        </header>
+
+        <!-- KPIs Integrados -->
+        <section class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-icon"><i data-lucide="users"></i></div>
+                <div>
+                    <span class="dashboard-kpi-label">Clientes registrados</span>
+                    <h2 class="dashboard-kpi-value" id="dashboard-clientes-total">0</h2>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon"><i data-lucide="file-text"></i></div>
+                <div>
+                    <span class="dashboard-kpi-label">Cotizaciones activas</span>
+                    <h2 class="dashboard-kpi-value" id="dashboard-cotizaciones-total">0</h2>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon"><i data-lucide="target"></i></div>
+                <div>
+                    <span class="dashboard-kpi-label">Oportunidades</span>
+                    <h2 class="dashboard-kpi-value" id="dashboard-oportunidades-total">0</h2>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon"><i data-lucide="dollar-sign"></i></div>
+                <div>
+                    <span class="dashboard-kpi-label">Ventas del mes</span>
+                    <h2 class="dashboard-kpi-value" id="dashboard-ventas-total">$ 0</h2>
+                </div>
+            </div>
+        </section>
+
+        <!-- Paneles Muestra -->
+        <section class="dashboard-panel-grid">
+            <a href="clientes.html" class="dashboard-info-card">
+                <h3>Resumen de clientes recientes</h3>
+                <p>Accede al directorio de cuentas comerciales.</p>
+                </a>
+            <a href="oportunidades.html" class="dashboard-info-card">
+                <h3>Pipeline de oportunidades</h3>
+                <p>Revisa el seguimiento de negocios en negociación.</p>
+            </a>
+        </section>
+
+    </main>
+
+    <script src="../js/dashboard.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
