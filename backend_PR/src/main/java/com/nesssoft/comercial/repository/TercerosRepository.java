@@ -6,11 +6,14 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Repository
 
 public class TercerosRepository {
+    
+    //Crear tercero 
     public Terceros save(Terceros tercero) throws SQLException{
  
         String sql = """
@@ -42,7 +45,7 @@ public class TercerosRepository {
         }
         return tercero;
     }
-
+    //Obtener todos los terceros
     public List<Terceros> findAll(){
         List<Terceros> tercerosList = new ArrayList<>();
         try (Connection connection = com.nesssoft.config.DatabaseConnection.getConnection();
@@ -70,6 +73,34 @@ public class TercerosRepository {
             e.printStackTrace();
         }
         return tercerosList;
+    }
+    //Obtener un tercero por su ID
+    public Optional<Terceros> findById(int id) {
+        String sql = "SELECT * FROM comercial.terceros WHERE id_tercero = ?";
+        try (Connection connection = com.nesssoft.config.DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, id);
+            try (java.sql.ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    Terceros tercero = new Terceros(
+                            resultSet.getInt("id_tercero"),
+                            resultSet.getString("tipo_tercero"),
+                            resultSet.getString("tipo_persona"),
+                            resultSet.getInt("id_tipo_documento"),
+                            resultSet.getString("numero_documento"),
+                            resultSet.getString("nombre"),
+                            resultSet.getString("direccion"),
+                            resultSet.getString("telefono"),
+                            resultSet.getString("correo_electronico")
+                    );
+                    return Optional.of(tercero);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
     }
 
 }
