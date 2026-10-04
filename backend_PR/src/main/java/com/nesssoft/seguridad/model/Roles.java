@@ -6,6 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
+//======================
+// Clase Roles, representa la entidad de roles en el sistema de seguridad.
+// Aca Se definen los atributos, constructores, getters y setters para la entidad Roles.
+//======================
+
 @Entity
 @Table(name = "roles", schema = "seguridad")
 @Data

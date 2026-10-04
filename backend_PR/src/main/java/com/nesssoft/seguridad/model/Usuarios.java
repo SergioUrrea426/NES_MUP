@@ -5,6 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import java.time.LocalDateTime;
 
+
+//======================
+// Clase Usuarios, representa la entidad de usuarios en el sistema de seguridad.
+// Aca Se definen los atributos, constructores, getters y setters para la entidad Usuarios.
+//======================
+
+
+
 /**
  * Entidad JPA para la tabla de Usuarios
  * Mapeo con la tabla seguridad.usuarios

@@ -7,6 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+//=======================
+// DEPRECATED: Esta clase es parte del código CLI antiguo.  
+// Se recomienda usar los endpoints REST en su lugar:
+// POST /api/usuarios/login?email=...&password=...
+//=======================
+
+
 /**
  * DEPRECATED: Esta clase es parte del código CLI antiguo.
  * Se recomienda usar los endpoints REST en su lugar:

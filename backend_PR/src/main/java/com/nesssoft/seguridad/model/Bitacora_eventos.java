@@ -7,6 +7,12 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+//=======================
+// Entidad JPA para la tabla de Bitácora de Eventos
+// Registra todas las acciones y eventos del sistema
+//=======================
+
+
 /**
  * Entidad JPA para la tabla de Bitácora de Eventos
  * Registra todas las acciones y eventos del sistema

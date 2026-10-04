@@ -1,5 +1,5 @@
 package com.nesssoft.comercial.controller;
-
+import com.nesssoft.comercial.service.TercerosService;
 import com.nesssoft.comercial.model.Terceros;
 
 
@@ -20,5 +20,33 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/Terceros")
 public class TercerosController {
+    @Autowired
+    private TercerosService tercerosService;
+
+
+    /*
+    * Endpoint para registrar un nuevo tercero (Cliente/Proveedor)
+    */
+
+    @PostMapping("/registrar")
+    public ResponseEntity<Map<String, Object>> registrarTercero(@RequestBody Terceros tercero){
+        
+        Map<String, Object> response = new HashMap<>();
+        try {
+            Terceros nuevoTercero = tercerosService.registrarTercero(tercero);
+            response.put("message", "Tercero registrado exitosamente");
+            response.put("tercero", nuevoTercero);
+            return new ResponseEntity<>(response, HttpStatus.CREATED);
+        } catch (IllegalStateException e) {
+            response.put("message", e.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
     
+
+
+
+
+
+
 }

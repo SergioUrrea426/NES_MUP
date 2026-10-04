@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 
+//=======================
+// Servicio para gestionar el login y autenticación de usuarios
+//=======================
+
 /**
  * Servicio para gestionar el login y autenticación de usuarios
  */

@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.sql.SQLException;
 
+
 /**
- * Servicio para operaciones CRUD  de usuarios
+ * Servicio para operaciones CRUD  de terceros (clientes/proveedores) en el sistema.
+ * Contiene métodos para registrar un nuevo tercero.
  */
 
 @Service

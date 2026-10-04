@@ -6,6 +6,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+//=======================
+// Repositorio JPA para la entidad Usuarios, proporciona operaciones CRUD automáticas y consultas personalizadas.
+//=======================
+
 /**
  * Repositorio JPA para la entidad Usuarios
  * Proporciona operaciones CRUD automáticas

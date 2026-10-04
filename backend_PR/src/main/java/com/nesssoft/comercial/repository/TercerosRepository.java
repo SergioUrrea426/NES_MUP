@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+//=======================
+// Repositorio para la entidad "Terceros", que maneja la persistencia de datos en la base de datos.
+// Contiene métodos para crear, obtener todos y obtener por ID los registros de terceros.
+//=======================
 
 @Repository
 

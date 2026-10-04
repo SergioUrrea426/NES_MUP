@@ -12,6 +12,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//=======================
+// Controlador REST para gestionar roles mediante endpoints HTTP.
+// Contiene métodos para crear y consultar roles.
+// Endpoints: POST, GET, PUT, DELETE
+//=======================
+
 /*
     Controlador REST para gestionar roles
     Endpoints: POST, GET, PUT, DELETE

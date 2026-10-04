@@ -5,6 +5,12 @@ import com.nesssoft.seguridad.repository.UsuariosRepository;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+//=======================
+// Clase de interfaz de usuario para registrar usuarios desde la línea de comandos.
+// Proporciona un flujo de entrada para capturar los datos del usuario y guardarlos en la base de datos.
+//=======================
+
+
 public class RegistroUsuarios {
     public static void main(String[] args) {
 

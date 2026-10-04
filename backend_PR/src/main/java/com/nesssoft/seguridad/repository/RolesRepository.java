@@ -9,6 +9,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+//=======================
+// Repositorio para la entidad Roles
+// Proporciona métodos para interactuar con la base de datos, como la creación de roles y la recuperación de todos los roles.
+//=======================
 
 @Repository
 public class RolesRepository {

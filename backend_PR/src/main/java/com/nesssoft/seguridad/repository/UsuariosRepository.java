@@ -8,6 +8,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+//=======================
+// Repositorio para la entidad Usuarios
+// Proporciona métodos para interactuar con la base de datos, como la creación de usuarios y la búsqueda por correo electrónico.
+//=======================
+
 public class UsuariosRepository {
 
     public void save(Usuarios usuario) throws SQLException {

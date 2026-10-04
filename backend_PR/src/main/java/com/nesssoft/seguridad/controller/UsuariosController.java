@@ -14,6 +14,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+//=======================
+// Controlador REST para gestionar usuarios mediante endpoints HTTP.
+// Contiene métodos para registrar, iniciar sesión, consultar, actualizar, desactivar y eliminar usuarios.
+// Endpoints: POST, GET, PUT, DELETE
+//=======================
+
+
+
 /**
  * Controlador REST para gestionar usuarios
  * Endpoints: POST, GET, PUT, DELETE

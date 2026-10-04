@@ -13,6 +13,12 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
+
+//=======================
+// Modelo de datos para la entidad "Terceros", que representa a clientes y proveedores en el sistema.
+//En este modelo se ven los datos completos que requiere un tercero, tabien hay un constructor adicional para la creación de un tercero con los campos esenciales.
+//=======================
 public class Terceros {
 
     //=======================
