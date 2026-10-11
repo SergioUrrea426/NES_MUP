@@ -2,6 +2,7 @@ package com.nesssoft.seguridad.controller;
 
 
 import com.nesssoft.seguridad.model.Usuarios;
+import com.nesssoft.seguridad.repository.UsuariosRepositoryJpa.UsuarioLoginProjection;
 import com.nesssoft.seguridad.service.UsuariosService;
 import com.nesssoft.seguridad.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,14 +75,19 @@ public class UsuariosController {
         String password = credentials.get("password");
 
         try {
-            boolean loginExitoso = loginService.login(email, password);
+            Optional<UsuarioLoginProjection> usuario = loginService.login(email, password);
             
-            if (loginExitoso) {
-                Optional<Usuarios> usuario = usuariosService.obtenerUsuarioByEmail(email);
-                
+            if (usuario.isPresent()) {
+                UsuarioLoginProjection usuarioAutenticado = usuario.get();
+                Map<String, Object> datosUsuario = new HashMap<>();
+                datosUsuario.put("idUsuario", usuarioAutenticado.getIdUsuario());
+                datosUsuario.put("username", usuarioAutenticado.getUsername());
+                datosUsuario.put("email", usuarioAutenticado.getEmail());
+                datosUsuario.put("estado", usuarioAutenticado.getEstado());
+
                 Map<String, Object> response = new HashMap<>();
                 response.put("mensaje", "Login exitoso");
-                response.put("usuario", usuario.orElse(null));
+                response.put("usuario", datosUsuario);
                 response.put("token", "token_placeholder_" + System.currentTimeMillis());
                 
                 return ResponseEntity.ok(response);
