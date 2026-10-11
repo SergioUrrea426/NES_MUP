@@ -1,12 +1,13 @@
 package com.nesssoft.comercial.controller;
 import com.nesssoft.comercial.service.TercerosService;
 import com.nesssoft.comercial.model.Terceros;
-
+// import com.nesssoft.comercial.repository.TercerosRepository;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+// import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,11 +43,16 @@ public class TercerosController {
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    
 
 
+    /**
+     * Endpoint para obtener todos los terceros
+     * @return ResponseEntity con la lista de terceros y el estado HTTP correspondiente
+     */
 
-
-
-
+    @GetMapping("/obtenerTodosTerceros")
+    public ResponseEntity<List<Terceros>> obtenerTodosTerceros(){
+        List<Terceros> tercerosList = tercerosService.obtenerTodosTerceros();
+        return new ResponseEntity<>(tercerosList, HttpStatus.OK);
+    }
 }

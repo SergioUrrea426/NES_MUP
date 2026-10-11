@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.sql.SQLException;
-
+import java.util.List;
 
 /**
  * Servicio para operaciones CRUD  de terceros (clientes/proveedores) en el sistema.
@@ -32,6 +32,16 @@ public class TercerosService {
         } catch (SQLException e) {
             throw new IllegalStateException("No fue posible registrar el tercero", e);
         }
+    }
+
+
+    /**
+     * Obtiene todos los terceros registrados en el sistema
+     * @param Terceros objeto de tercero consultado
+     * @return lista de terceros
+     */
+    public List<Terceros> obtenerTodosTerceros() {
+        return tercerosRepository.findAll();
     }
 
 

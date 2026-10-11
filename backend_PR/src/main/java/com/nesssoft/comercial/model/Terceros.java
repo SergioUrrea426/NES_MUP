@@ -445,13 +445,26 @@ public class Terceros {
     //=======================
     // Constructor adicional para la creación de un tercero con los campos esenciales
     //=======================
-    public Terceros(int idTercero, String tipoTercero, String tipoPersona, int idTipoDocumento, String numeroDocumento, String nombre, String direccion, String telefono, String correoElectronico) {
+    public Terceros(
+        int idTercero,
+        String tipoTercero,
+        String tipoPersona,
+        int idTipoDocumento,
+        String numeroDocumento,
+        String nombres,
+        String apellidos,
+        String direccion,
+        String telefono,
+        String correoElectronico
+    ) 
+    {
         this.idTercero = idTercero;
         this.tipoTercero = tipoTercero;
         this.tipoPersona = tipoPersona;
         this.idTipoDocumento = idTipoDocumento;
         this.numeroDocumento = numeroDocumento;
-        this.nombres = nombre;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
         this.direccion = direccion;
         this.telefonoFijo = telefono;
         this.correoPrincipal = correoElectronico;

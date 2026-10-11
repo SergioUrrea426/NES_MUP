@@ -23,7 +23,7 @@ public class TercerosRepository {
         String sql = """
                 INSERT INTO comercial.terceros
                 (tipo_tercero,tipo_persona, id_tipo_documento,
-                numero_documento, nombre, direccion, telefono,
+                numero_documento, nombres, apellidos, direccion, telefono,
                  correo_electronico)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                 """;
@@ -35,9 +35,10 @@ public class TercerosRepository {
             statement.setInt(3, tercero.getIdTipoDocumento());
             statement.setString(4, tercero.getNumeroDocumento());
             statement.setString(5, tercero.getNombres());
-            statement.setString(6, tercero.getDireccion());
-            statement.setString(7, tercero.getTelefonoFijo());
-            statement.setString(8, tercero.getCorreoPrincipal());
+            statement.setString(6, tercero.getApellidos());
+            statement.setString(7, tercero.getDireccion());
+            statement.setString(8, tercero.getTelefonoFijo());
+            statement.setString(9, tercero.getCorreoPrincipal());
 
             statement.executeUpdate();
 
@@ -54,7 +55,7 @@ public class TercerosRepository {
         List<Terceros> tercerosList = new ArrayList<>();
         try (Connection connection = com.nesssoft.config.DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                     "select id_tercero, tipo_tercero, tipo_persona, id_tipo_documento, numero_documento, nombre, direccion, telefono, correo_electronico " +
+                     "select id_tercero, tipo_tercero, tipo_persona, id_tipo_documento, numero_documento, nombres, apellidos, direccion, telefono, correo_electronico " +
                              "from comercial.terceros");
              java.sql.ResultSet resultSet = statement.executeQuery()) {
 
@@ -64,13 +65,14 @@ public class TercerosRepository {
                 String tipoPersona = resultSet.getString("tipo_persona");
                 int idTipoDocumento = resultSet.getInt("id_tipo_documento");
                 String numeroDocumento = resultSet.getString("numero_documento");
-                String nombre = resultSet.getString("nombre");
+                String nombres = resultSet.getString("nombres");
+                String apellidos = resultSet.getString("apellidos");
                 String direccion = resultSet.getString("direccion");
                 String telefono = resultSet.getString("telefono");
                 String correoElectronico = resultSet.getString("correo_electronico");
 
                 Terceros tercero = new Terceros(idTercero, tipoTercero, tipoPersona, idTipoDocumento,
-                    numeroDocumento, nombre, direccion, telefono, correoElectronico);
+                    numeroDocumento, nombres, apellidos, direccion, telefono, correoElectronico);
                 tercerosList.add(tercero);
             }
         } catch (SQLException e) {
@@ -93,7 +95,8 @@ public class TercerosRepository {
                             resultSet.getString("tipo_persona"),
                             resultSet.getInt("id_tipo_documento"),
                             resultSet.getString("numero_documento"),
-                            resultSet.getString("nombre"),
+                            resultSet.getString("nombres"),
+                            resultSet.getString("apellidos"),
                             resultSet.getString("direccion"),
                             resultSet.getString("telefono"),
                             resultSet.getString("correo_electronico")
